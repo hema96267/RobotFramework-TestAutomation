@@ -17,7 +17,9 @@ Do a POST Request and validate the response code, response body, and response he
     Create Session  mysession  http://localhost:8080/calculator  verify=true
     &{body}=  Create Dictionary  birthday=19071996  gender=Female  name=Hema natid=S6262926F salary=6000 tax=300
     &{header}=  Create Dictionary  Cache-Control=no-cache
-    ${response}=  POST On Session  mysession  /insert  data=${body}  headers=${header}
-    Status Should Be  201  ${response}  #Check Status as 201
+    ${response}=         POST On Session  mysession  /insert  data=${body}  headers=${header}
+    ${json_response}=    To Json           ${response.content}
+    log to console       ${json_response}
+    Status Should Be     201               ${response}  #Check Status as 201
 
 *** Keywords ***

@@ -11,6 +11,7 @@ Verify File should not Upload, when invalid format of CSV is provided
     Open Browser  http://localhost:8080/  chrome
     Maximise Browser Window
 
+    Location Should Be  http://localhost:8080/
     Wait Until Element Is Visible  //span[contains(text(),'Upload CSV file')]  timeout=5
     Page Should Contains  Upload CSV file
     Press Keys  //*[@id="contents"]/div[1]/div[1]/span  RETURN
